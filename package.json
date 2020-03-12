@@ -1,0 +1,32 @@
+{
+  "name": "@endlessjs/elasticsearch-easypeasy",
+  "version": "1.0.0",
+  "description": "this package this package is intended to abstract pro elasticsearch calls in a single client when used in nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/endlessjs/elasticsearch-easypeasy.git"
+  },
+  "keywords": [
+    "elasticsearch",
+    "elasticsearch client",
+    "elasticsearch client nodejs",
+    "elasticsearch latest"
+  ],
+  "author": "fabio guelfi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/endlessjs/elasticsearch-easypeasy/issues"
+  },
+  "homepage": "https://github.com/endlessjs/elasticsearch-easypeasy#readme",
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.6.0",
+    "array.prototype.flatmap": "^1.2.3",
+    "elastic-builder": "^2.6.0",
+    "elasticsearch": "^16.6.0"
+  },
+  "devDependencies": {}
+}
