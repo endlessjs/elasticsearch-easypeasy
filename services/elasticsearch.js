@@ -3,42 +3,35 @@ const { Client } = require("@elastic/elasticsearch");
 const elasticsearch = require("elasticsearch");
 
 class ElasticsearchEasypeasy {
-  constructor({ host, host_url, user, password }) {
+  constructor({ host }) {
     this.host = host;
-    this.user = user;
-    this.password = password;
-
-    this.client = new Client({
-      node: host,
-      auth: {
-        username,
-        password
-      }
-    });
-
-    this.client_old = new elasticsearch.Client({
-      host: host_url,
-      log: "trace"
-    });
+    this.client = new Client({ node: host });
+    this.client_old = new elasticsearch.Client({ host, log: "trace" });
   }
 
   indiceCreate = async (index, body) => {
-    return await this.client.indices.create(
-      {
-        index,
-        body
-      },
-      { ignore: [400] }
-    );
+    try {
+      return await this.client.indices.create(
+        {
+          index,
+          body
+        },
+        { ignore: [400] }
+      );
+    } catch (err) {
+      return err;
+    }
   };
 
   search = async (index, body) => {
-    const response = this.client_old.search({
-      index,
-      body
-    });
-
-    return response;
+    try {
+      return this.client_old.search({
+        index,
+        body
+      });
+    } catch (err) {
+      return err;
+    }
   };
 
   bulkCreate = async (index, datas) => {
@@ -68,9 +61,7 @@ class ElasticsearchEasypeasy {
         return erroredDocuments;
       }
 
-      const response = await this.client.count({ index: "tweets" });
-
-      return response;
+      return await this.client.count({ index: "tweets" });
     } catch (err) {
       return err;
     }
